@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block title %}新規登録{% endblock title %}
+
+
+{% block content %}
+
+<div class="border border-dark-subtle border-3 rounded-3 p-5 mx-auto" style="max-width: 540px">
+    
+    <h3 class="mb-3 text-center">アカウント作成フォーム</h3>
+
+    <form action="" method="post">{% csrf_token %}
+        
+        {# Signup form #}
+        <div class="mb-3">
+            {# ユーザー名入力欄 #}
+            <label for="id_username">ユーザー名:</label>
+            <input type="text" id="id_username" required class="form-control">
+        </div>
+        <div class="mb-3">
+            {# パスワード入力欄 #}
+            <label for="id_password1">パスワード:</label>
+            <input type="password" id="id_password1" required class="form-control">
+        </div>
+        <div class="mb-3">
+            {# 確認用パスワード入力欄 #}
+            <label for="id_password2">パスワード(確認用):</label>
+            <input type="password" id="id_password2" required class="form-control">
+        </div>
+
+        {# Submit button #}
+        <div class="text-center">
+            {% comment %}
+            まだSignupViewは仮実装（TemplateViewでレンダリングするだけ）
+            なので、以下の"新規作成"ボタンは機能しません。
+            {% endcomment %}
+            <a href="{% url 'login' %}" class="btn btn-secondary">作成済みの方はこちら</a>
+            <button type="submit" class="btn btn-dark">新規作成</button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

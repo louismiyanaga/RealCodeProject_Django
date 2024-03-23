@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block title %}ホーム{% endblock title %}
+
+
+{% block header %}{% include "_header.html" %}{% endblock header %}
+
+
+{% block content %}
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# ここに商品画像URL #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# ここに商品名 #}商品１</h5>
+                    <p>{# ここに価格 #}2000円</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# ここに商品詳細へのリンク #}{% url 'item' %}">詳細を見る</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# ここに商品画像URL #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# ここに商品名 #}商品２</h5>
+                    <p>{# ここに価格 #}3000円</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# ここに商品詳細へのリンク #}{% url 'item' %}">詳細を見る</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# ここに商品画像URL #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# ここに商品名 #}商品３</h5>
+                    <p>{# ここに価格 #}4000円</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# ここに商品詳細へのリンク #}{% url 'item' %}">詳細を見る</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+</div>
+
+{% endblock content %}
