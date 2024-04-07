@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block title %}カート{% endblock title %}
+
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 960px">
+    
+    {# Table of cart contents #}
+    <table class="table align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">商品名</th>
+                <th scope="col">単価</th>
+                <th scope="col">購入数</th>
+                <th scope="col">合計</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# ここに商品名 #}商品１</td>
+                <td>{# ここに商品単価 #}2000円</td>
+                <td>{# ここに購入数 #}1</td>
+                <td class="text-end">{# ここに商品合計 #}2000円</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# ここに商品名 #}商品２</td>
+                <td>{# ここに商品単価 #}3000円</td>
+                <td>{# ここに購入数 #}1</td>
+                <td class="text-end">{# ここに商品合計 #}3000円</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# ここに商品名 #}商品３</td>
+                <td>{# ここに商品単価 #}4000円</td>
+                <td>{# ここに購入数 #}3</td>
+                <td class="text-end">{# ここに商品合計 #}12000円</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td class="text-end fw-bolder fs-5" colspan="4">総額：{# ここにカート総額 #}17000円</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# Continue or checkout button #}
+    <div class="text-center">
+        {% comment %}
+        まだOrderViewは仮実装（＝successページにリダイレクトするだけの機能）のため、
+        以下の"購入へ進む"ボタンは機能せず、successページにリダイレクトするだけです。
+        {% endcomment %}
+        <form action="{% url 'order' %}" method="POST">{% csrf_token %}
+            <a href="{% url 'home' %}" class="btn btn-secondary">ショッピングを続ける</a>
+            <button type="submit" class="btn btn-dark">購入へ進む</a>
+        </form>
+    </div>
+    
+</div>
+    
+{% endblock content %}
