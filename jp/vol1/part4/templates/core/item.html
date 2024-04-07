@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block title %}商品詳細{% endblock title %}
+
+
+{% block content %}
+
+<div class="row gx-4 gx-lg-5 align-items-center">
+
+    {# Item image #}
+    <div class="col-md-6">
+        <img class="card-img-top mb-5 mb-md-0 rounded-3" src="{# ここに商品画像URL #}https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="...">
+    </div>
+    
+    {# Item info & ado-to-cart #}
+    <div class="col-md-6">
+        <h1 class="fw-bolder">{# ここに商品名 #}商品１</h1>
+        <div class="fs-5 mb-5">
+            <span>{# ここに商品価格 #}2000円</span>
+        </div>
+        <p class="mb-5">{# ここに商品説明 #}テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        
+        {% comment %}
+        まだpostメソッドを実装していないので、
+        以下の"カートに追加"ボタンは機能しません。
+        {% endcomment %}
+        <form action="" method="POST">{% csrf_token %}
+            <div class="mb-3">
+                購入数：{# ここに購入数入力欄 #}
+                <input type="number" class="form-control text-center me-3 d-inline" style="max-width: 3.5rem">
+            </div>
+            <button type="submit" class="btn btn-dark flex-shrink-0">
+                <i class="bi-cart-fill me-1"></i>カートに追加
+            </button>
+        </form>  
+    </div>
+    
+</div>
+
+{% endblock content %}
