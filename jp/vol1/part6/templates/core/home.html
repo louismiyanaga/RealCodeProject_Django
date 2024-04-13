@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block title %}ホーム{% endblock title %}
+
+
+{% block header %}{% include "_header.html" %}{% endblock header %}
+
+
+{% block content %}
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+    {% for item in item_list %}
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            {% if item.image %}
+            <img class="card-img-top" src="{{ item.image.url }}" alt="{{ item.name }}" style="height:150px;object-fit:cover" />
+            {% else %}
+            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {% endif %}
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{{ item.name }}</h5>
+                    <p>{{ item.price }}円</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{% url 'item' item.id %}">詳細を見る</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+    {% empty %}
+    <p>商品がありません。</p>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}
