@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block title %}カート{% endblock title %}
+
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 960px">
+    
+    {% if cart.cart_items.exists %}
+    {# Table of cart contents #}
+    <table class="table align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">商品名</th>
+                <th scope="col">単価</th>
+                <th scope="col">購入数</th>
+                <th scope="col">合計</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart_item in cart.cart_items.all %}
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{{ cart_item.item.name }}</td>
+                <td>{{ cart_item.item.price }}円</td>
+                <td>{{ cart_item.quantity }}</td>
+                <td class="text-end">{{ cart_item.total_price }}円
+                    <form action="{% url 'delete_cart_item' user.id %}" method="post" class="d-inline">{% csrf_token %}
+                        <input type="hidden" name="cart_item_pk" value="{{ cart_item.id }}">
+                        <button type="submit" class="btn btn-warning btn-sm ms-3">削除</button>
+                    </form>
+                </td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            {% endfor %}
+            <tr>
+                <td class="text-end fw-bolder fs-5" colspan="4">総額：{{ cart.total_price }}円</td>
+            </tr>
+        </tbody>
+    </table>
+    {# Continue or checkout button #}
+    <div class="text-center">
+        <form action="{% url 'order' %}" method="POST">{% csrf_token %}
+            <a href="{% url 'home' %}" class="btn btn-secondary">ショッピングを続ける</a>
+            <button type="submit" class="btn btn-dark">購入へ進む</a>
+        </form>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <p>カートは空です。</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary">商品を探す</a>
+    </div>
+    {% endif %}
+
+</div>
+    
+{% endblock content %}

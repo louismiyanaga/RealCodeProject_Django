@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}登録完了{% endblock title %}
+
+
+{% block content %}
+
+<div class="text-center">
+    <p>アカウント作成が完了しました。</p>
+    <a href="{% url 'login' %}" class="btn btn-secondary">ログインしてショッピングを始める</a>
+</div>
+
+{% endblock content %}

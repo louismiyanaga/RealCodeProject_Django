@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block title %}新規登録{% endblock title %}
+
+
+{% block content %}
+
+<div class="border border-dark-subtle border-3 rounded-3 p-5 mx-auto" style="max-width: 540px">
+    
+    <h3 class="mb-3 text-center">アカウント作成フォーム</h3>
+
+    <form action="" method="post">{% csrf_token %}
+        
+        {# Signup form #}
+        {% for field in form %}
+        <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field }}
+            <span class="form-text">{{ field.help_text }}</span>
+            {% if field.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        {# Submit button #}
+        <div class="text-center">
+            <a href="{% url 'login' %}" class="btn btn-secondary">作成済みの方はこちら</a>
+            <button type="submit" class="btn btn-dark">新規作成</button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}
