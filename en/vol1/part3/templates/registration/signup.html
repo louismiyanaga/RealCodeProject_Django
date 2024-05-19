@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block title %}Signup{% endblock title %}
+
+
+{% block content %}
+
+<div class="border border-dark-subtle border-3 rounded-3 p-5 mx-auto" style="max-width: 540px">
+    
+    <h3 class="mb-3 text-center">Signup Form</h3>
+
+    <form action="" method="post">{% csrf_token %}
+        
+        {# Signup form #}
+        <div class="mb-3">
+            {# Username field here #}
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" required class="form-control">
+        </div>
+        <div class="mb-3">
+            {# Password field here #}
+            <label for="id_password1">Password:</label>
+            <input type="password" id="id_password1" required class="form-control">
+        </div>
+        <div class="mb-3">
+            {# Password confirmation field here #}
+            <label for="id_password2">Password confirmation:</label>
+            <input type="password" id="id_password2" required class="form-control">
+        </div>
+
+        {# Submit button #}
+        <div class="text-center">
+            {% comment %}
+            Since SignupView is still a tentative implementation,
+            which inherits TemplateView and just renders a page,
+            the following 'Signup' button will not work.
+            {% endcomment %}
+            <a href="{% url 'login' %}" class="btn btn-secondary">Already have an account?</a>
+            <button type="submit" class="btn btn-dark">Signup</button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

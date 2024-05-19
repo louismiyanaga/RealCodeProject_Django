@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}Signup Done{% endblock title %}
+
+
+{% block content %}
+
+<div class="text-center">
+    <p>Your account has been created!</p>
+    <a href="{% url 'login' %}" class="btn btn-secondary">Login to start shopping</a>
+</div>
+
+{% endblock content %}

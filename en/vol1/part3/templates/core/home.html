@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block title %}Home{% endblock title %}
+
+
+{% block header %}{% include "_header.html" %}{% endblock header %}
+
+
+{% block content %}
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# Item image URL here #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# Item name here #}Item 1</h5>
+                    <p>{# Item price here #}&#36; 15.99</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# Link to item page here #}{% url 'item' %}">See product details</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# Item image URL here #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# Item name here #}Item 2</h5>
+                    <p>{# Item price here #}&#36; 25.99</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# Link to item page here #}{% url 'item' %}">See product details</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+    {# -------------------- Each item card -------------------- #}
+    <div class="col mb-5">
+        <div class="card h-100">
+            {# Item image #}
+            <img class="card-img-top" src="{# Item image URL here #}https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+            {# Item info #}
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">{# Item name here #}Item 3</h5>
+                    <p>{# Item price here #}&#36; 35.99</p>
+                </div>
+            </div>
+            {# Button #}
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                <a class="btn btn-outline-dark mt-auto" href="{# Link to item page here #}{% url 'item' %}">See product details</a>
+            </div>
+        </div>
+    </div>
+    {# -------------------- Each item card -------------------- #}
+
+</div>
+
+{% endblock content %}

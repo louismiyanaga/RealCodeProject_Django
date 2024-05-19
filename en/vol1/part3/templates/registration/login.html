@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %}Login{% endblock title %}
+
+
+{% block content %}
+
+<div class="border border-dark-subtle border-3 rounded-3 p-5 mx-auto" style="max-width: 540px">
+
+    <h3 class="mb-3 text-center">Login Form</h3>
+    
+    <form action="" method="POST">{% csrf_token %}
+        
+        {# Login form #}
+        <div class="mb-3">
+            {# Username field here #}
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" required class="form-control">
+        </div>
+        <div class="mb-3">
+            {# Password field here #}
+            <label for="id_password">Password:</label>
+            <input type="password" id="id_password" required class="form-control">
+        </div>
+
+        {# Submit button #}
+        <div class="text-center">
+            <a href="{% url 'signup' %}" class="btn btn-secondary">Don't have an account?</a>
+            <button type="submit" class="btn btn-dark">Login</button>
+        </div>
+
+    </form>
+    
+</div>
+
+{% endblock content %}

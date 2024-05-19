@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block title %}Cart{% endblock title %}
+
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 960px">
+    
+    {# Table of cart contents #}
+    <table class="table align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# Item name here #}Item 1</td>
+                <td>{# Unit price here #}&#36; 15.99</td>
+                <td>{# Quantity here #}1</td>
+                <td class="text-end">{# Amount here #}&#36; 15.99</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# Item name here #}Item 2</td>
+                <td>{# Unit price here #}&#36; 25.99</td>
+                <td>{# Quantity here #}1</td>
+                <td class="text-end">{# Amount here #}&#36; 25.99</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{# Item name here #}Item 3</td>
+                <td>{# Unit price here #}&#36; 35.99</td>
+                <td>{# Quantity here #}3</td>
+                <td class="text-end">{# Amount here #}&#36; 107.97</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td class="text-end fw-bolder fs-5" colspan="4">Total: {# Total price here #}&#36; 149.95</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# Continue or checkout button #}
+    <div class="text-center">
+        {% comment %}
+        Since OrderView is still a tentative implementation,
+        which inherits RedirectView and just redirects to a success page,
+        the following 'Proceed to checkout' button will not work.
+        {% endcomment %}
+        <form action="{% url 'order' %}" method="POST">{% csrf_token %}
+            <a href="{% url 'home' %}" class="btn btn-secondary">Continue shopping</a>
+            <button type="submit" class="btn btn-dark">Proceed to checkout</a>
+        </form>
+    </div>
+    
+</div>
+    
+{% endblock content %}
