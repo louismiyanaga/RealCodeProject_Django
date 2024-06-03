@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Success{% endblock title %}
+
+
+{% block content %}
+
+<div class="text-center">
+    <p>Your payment has been successfully processed. Thank you for your purchase!</p>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to homepage</a>
+</div>
+
+{% endblock content %}
