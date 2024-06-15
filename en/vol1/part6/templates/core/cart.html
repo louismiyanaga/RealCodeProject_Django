@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block title %}Cart{% endblock title %}
+
+
+{% block content %}
+
+<div class="mx-auto" style="max-width: 960px">
+    
+    {% if cart.cart_items.exists %}
+    {# Table of cart contents #}
+    <table class="table align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart_item in cart.cart_items.all %}
+            {# ---------- Each cart item ---------- #}
+            <tr>
+                <td>{{ cart_item.item.name }}</td>
+                <td>&#36; {{ cart_item.item.price }}</td>
+                <td>{{ cart_item.quantity }}</td>
+                <td class="text-end">&#36; {{ cart_item.total_price }}</td>
+            </tr>
+            {# ---------- Each cart item ---------- #}
+            {% endfor %}
+            <tr>
+                <td class="text-end fw-bolder fs-5" colspan="4">Total: &#36; {{ cart.total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {# Continue or checkout button #}
+    <div class="text-center">
+        <form action="{% url 'order' %}" method="POST">{% csrf_token %}
+            <a href="{% url 'home' %}" class="btn btn-secondary">Continue shopping</a>
+            <button type="submit" class="btn btn-dark">Proceed to checkout</a>
+        </form>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <p>Your cart is empty.</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Search products</a>
+    </div>
+    {% endif %}
+
+</div>
+    
+{% endblock content %}
