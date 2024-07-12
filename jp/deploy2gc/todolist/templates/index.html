@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django To-Do List App</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body class="text-bg-light">
+    <div class="my-5 container text-center">
+        <h1 class="mb-5">Django To-Do List App</h1>
+        <form action="" method="POST">{% csrf_token %}
+            <div class="w-50 mx-auto">
+                {{ form.name }}
+            </div>
+            <div class="mx-auto mt-3">
+                <button type="submit" class="btn btn-success">Create</button>
+            </div>
+        </form>
+    </div>
+    {% if todo_list %}
+    <ul class="my-5 container list-group">
+        {% for todo in todo_list reversed %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fs-3">{{ todo.name }}</span>
+            <a href="{% url 'delete' todo.id %}"><img src="{% static 'img/trash.png' %}"  style="max-width:40px" alt=""></a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-center">There is no To-Do list.</p>
+    {% endif %}
+</body>
+</html>
