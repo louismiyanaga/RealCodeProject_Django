@@ -1,0 +1,53 @@
+
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">
+                Rooms
+            </div>
+            <!-- ========== 1st Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse1F" aria-expanded="false" aria-controls="collapseLayouts">
+                1st Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse1F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="#">ROOM A</a>
+                    <a class="nav-link" href="#">ROOM B</a>
+                    <a class="nav-link" href="#">ROOM C</a>
+                    <a class="nav-link" href="#">ROOM D</a>
+                    <a class="nav-link" href="#">ROOM E</a>
+                </nav>
+            </div>
+            <!-- ========== 2nd Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse2F" aria-expanded="false" aria-controls="collapseLayouts">
+                2nd Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse2F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="#">ROOM F</a>
+                    <a class="nav-link" href="#">ROOM G</a>
+                    <a class="nav-link" href="#">ROOM H</a>
+                    <a class="nav-link" href="#">ROOM I</a>
+                </nav>
+            </div>
+            <!-- ========== 3rd Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse3F" aria-expanded="false" aria-controls="collapseLayouts">
+                3rd Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse3F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="#">ROOM J</a>
+                    <a class="nav-link" href="#">ROOM K</a>
+                    <a class="nav-link" href="#">ROOM L</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="sb-sidenav-footer">
+        <div class="small">Logged in as:</div>
+        {{ user }}
+    </div>
+</nav>
