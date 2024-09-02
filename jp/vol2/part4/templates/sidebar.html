@@ -1,0 +1,56 @@
+
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">
+                Rooms
+            </div>
+            <!-- ========== 1st Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse1F" aria-expanded="false" aria-controls="collapseLayouts">
+                1st Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse1F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    {% for room in room_list %}
+                        {% if room.floor == 1 %}
+                        <a class="nav-link" href="{% url 'room' room.pk %}">{{ room }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+            <!-- ========== 2nd Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse2F" aria-expanded="false" aria-controls="collapseLayouts">
+                2nd Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse2F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    {% for room in room_list %}
+                        {% if room.floor == 2 %}
+                        <a class="nav-link" href="{% url 'room' room.pk %}">{{ room }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+            <!-- ========== 3rd Floor ========== -->
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse3F" aria-expanded="false" aria-controls="collapseLayouts">
+                3rd Floor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse3F" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    {% for room in room_list %}
+                        {% if room.floor == 3 %}
+                        <a class="nav-link" href="{% url 'room' room.pk %}">{{ room }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="sb-sidenav-footer">
+        <div class="small">Logged in as:</div>
+        {{ user }}
+    </div>
+</nav>
