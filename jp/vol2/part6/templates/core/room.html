@@ -1,0 +1,95 @@
+{% extends "core/base.html" %}
+
+{% block title %}Room{% endblock title %}
+
+{% block content %}
+
+<h1 class="mt-4">{{ room }}</h1>
+<!-- Breadcrumb -->
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active">{{ room }}</li>
+</ol>
+<!-- Calendar -->
+<div class="mb-5">
+    <div id="calendar"></div>
+</div>
+<!-- Cancel/Confirm Btn -->
+<div class="row mb-5">
+    <div class="col text-end">
+        <a href="{% url 'room' room.pk %}" id="cancelBtn" class="btn btn-secondary disabled">Cancel Reservation</a>
+    </div>
+    <form class="col" action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="room", value="{{ room.pk }}">
+        <input type="hidden" name="user", value="{{ user.pk }}">
+        <input type="hidden" name="title", value="", id="inputTitle">
+        <input type="hidden" name="start_time", value="", id="inputStartTime">
+        <input type="hidden" name="end_time", value="", id="inputEndTime">
+
+        <button id="confirmBtn" type="submit" class="btn btn-primary disabled">Confirm Reservation</button>
+    </form>
+</div>            
+
+{% endblock content %}
+
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        function formatDateTime(datetime) {
+            const year = datetime.getFullYear();
+            const month = String(datetime.getMonth()+1).padStart(2, '0');
+            const day = String(datetime.getDate()).padStart(2, '0');
+            const hour = String(datetime.getHours()).padStart(2, '0');
+            const minute = String(datetime.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hour}:${minute}`;
+        };
+
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+            events: JSON.parse('{{ events|safe }}'),
+
+            initialView: 'timeGridWeek',
+            allDaySlot: false,
+            height: 500,
+            timeZone: 'UTC',
+            slotMinTime: '07:00:00',
+            slotMaxTime: '19:00:00',
+            slotDuration: '00:30:00',
+            businessHours: true,
+            eventBackgroundColor: '#B8B8B8',
+            eventBorderColor: '#B8B8B8',
+
+            selectable: true,
+            selectOverlap: false,
+            select: function(info) {
+                const reservationTitle = prompt('Please enter a title for your reservation.');
+                if (reservationTitle) {
+                    calendar.addEvent({
+                        title: reservationTitle,
+                        start: info.start,
+                        end: info.end,
+                    });
+                    var inputTitle = document.getElementById('inputTitle');
+                    var inputStartTime = document.getElementById('inputStartTime');
+                    var inputEndTime = document.getElementById('inputEndTime');
+                    inputTitle.value = reservationTitle;
+                    inputStartTime.value = formatDateTime(info.start);
+                    inputEndTime.value = formatDateTime(info.end);
+                    document.getElementById('confirmBtn').classList.remove('disabled');
+                    document.getElementById('cancelBtn').classList.remove('disabled');
+                };
+            },
+        });
+        calendar.render();
+    });
+
+</script>
+
+{% endblock script %}
