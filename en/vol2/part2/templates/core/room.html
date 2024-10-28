@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block title %}Room{% endblock title %}
+
+{% block content %}
+
+<h1 class="mt-4">Room A</h1>
+<!-- Breadcrumb -->
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Room A</li>
+</ol>
+<!-- Calendar -->
+<div class="mb-5">
+    {# This is still a dummy image. #}
+    <img class="img-fluid mx-auto d-block" src="https://dummyimage.com/1500x500/dee2e6/6c757d.jpg&text=Calendar+here!" alt="">
+</div>
+<!-- Cancel/Confirm Btn -->
+<div class="row mb-5">
+    <div class="col text-end">
+        <a href="#" id="cancelBtn" class="btn btn-secondary disabled">Cancel Reservation</a>
+    </div>
+    <form class="col" action="" method="POST">
+        {% csrf_token %}
+        <button id="confirmBtn" type="submit" class="btn btn-primary disabled">Confirm Reservation</button>
+    </form>
+</div>            
+
+{% endblock content %}
+
+
